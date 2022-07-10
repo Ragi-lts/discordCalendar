@@ -7,10 +7,10 @@ export const getNowTime: ApplicationCommand = {
   type: "CHAT_INPUT",
   run: async (client: Client, interaction: BaseCommandInteraction) => {
     const nowTime = new Date().toLocaleString();
-
     await interaction.followUp({
       ephemeral: true,
       content: nowTime,
     });
   },
+  submitted(client, interaction) {},
 };

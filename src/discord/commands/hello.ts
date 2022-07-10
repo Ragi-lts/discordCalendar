@@ -7,9 +7,11 @@ export const Hello: ApplicationCommand = {
   type: "CHAT_INPUT",
   run: async (client: Client, interaction: BaseCommandInteraction) => {
     const content = "Hello there!";
+    await interaction.deferReply();
     await interaction.followUp({
       ephemeral: true,
       content,
     });
   },
+  submitted(client, interaction) {},
 };

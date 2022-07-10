@@ -1,13 +1,12 @@
 /**環境変数 */
 import dotenv from "dotenv";
 
+import { Client, Intents, Interaction } from "discord.js";
 import {
-  Client,
-  Intents,
-  Interaction,
-  BaseCommandInteraction,
-} from "discord.js";
-import { slashCommands } from "./applicationCommands";
+  slashCommands,
+  handleSlashCommand,
+  submittedModal,
+} from "./applicationCommands";
 
 dotenv.config({ path: __dirname + "/../.env" });
 
@@ -53,21 +52,9 @@ discordApp.on("interactionCreate", async (interaction: Interaction) => {
   if (interaction.isCommand() || interaction.isContextMenu()) {
     await handleSlashCommand(discordApp, interaction);
   }
-});
-
-const handleSlashCommand = async (
-  client: Client,
-  interaction: BaseCommandInteraction
-): Promise<void> => {
-  const slashCommand = slashCommands.find(
-    (c) => c.name === interaction.commandName
-  );
-  if (!slashCommand) {
-    interaction.followUp({ content: "An error has occurred" });
-    return;
+  if (interaction.isModalSubmit()) {
+    await submittedModal(discordApp, interaction);
   }
-  await interaction.deferReply();
-  slashCommand.run(client, interaction);
-};
+});
 
 export default discordApp;

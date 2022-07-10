@@ -14,28 +14,7 @@ import { TodoService } from "./backend/Service/TodoService";
 
 /**Discord  関連*/
 import discordApp from "./discord/main";
-import { REST } from "@discordjs/rest";
-import { Routes } from "discord-api-types/v9";
 
-/*
-console.log(commands);
-const rest = new REST({ version: "9" }).setToken(process.env.BOT_TOKEN || "");
-(async () => {
-  try {
-    console.log("Started refreshing application (/) commands.");
-
-    await rest.put(Routes.applicationCommands(process.env.BOT_APPID || ""), {
-      body: commands,
-    });
-
-    console.log("Successfully reloaded application (/) commands.");
-  } catch (error) {
-    console.error(error);
-  }
-})();
-*/
-
-//console.log(applicationCommands);
 AppDataSource.initialize()
   .then(async () => {
     console.info("Database Initialized!!");
