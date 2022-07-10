@@ -5,13 +5,18 @@ import {
   ModalSubmitInteraction,
 } from "discord.js";
 
-import { ApplicationCommand as Command } from "./interfaces/ApplicationCommand";
+import {
+  ApplicationCommand as slashCommand,
+  ContextMenuCommand as contextCommand,
+} from "./interfaces/ApplicationCommand";
 
 import { getNowTime } from "./commands/getNowTime";
 import { Hello } from "./commands/hello";
 import { sampleModal } from "./commands/modal/sampleModal";
+import { contextMenu } from "./commands/contextMenu/sampleContextMenu";
 
-export const slashCommands: Command[] = [Hello, getNowTime, sampleModal];
+export const slashCommands: slashCommand[] = [Hello, getNowTime, sampleModal];
+export const contextCommands: contextCommand[] = [contextMenu];
 
 export const handleSlashCommand = async (
   client: Client,
@@ -20,11 +25,8 @@ export const handleSlashCommand = async (
   const slashCommand = slashCommands.find(
     (c) => c.name === interaction.commandName
   );
-  if (!slashCommand) {
-    interaction.followUp({ content: "An error has occurred" });
-    return;
-  }
-  slashCommand.run(client, interaction);
+  if (slashCommand) slashCommand.run(client, interaction);
+  if (!slashCommand) interaction.followUp({ content: "An error has occurred" });
 };
 
 export const submittedModal = async (
@@ -35,10 +37,6 @@ export const submittedModal = async (
   const modalNameArray = modals.map((modal) => modal.modalId);
   const modalId = interaction.customId;
   const ModalIndex = modalNameArray.indexOf(modalId);
-  if (ModalIndex != -1) {
-    modals[ModalIndex].submitted(client, interaction);
-    return;
-  } else {
-    interaction.reply("不正なSubmit");
-  }
+  if (ModalIndex != -1) modals[ModalIndex].submitted(client, interaction);
+  if (ModalIndex == -1) interaction.reply("不正なSubmit");
 };

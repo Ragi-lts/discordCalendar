@@ -13,7 +13,7 @@ import { Todo } from "./backend/Entity/Todos";
 import { TodoService } from "./backend/Service/TodoService";
 
 /**Discord  関連*/
-import discordApp from "./discord/main";
+import discordApp from "./discord";
 
 AppDataSource.initialize()
   .then(async () => {
