@@ -1,16 +1,15 @@
 import { ApplicationCommand } from "../interfaces/ApplicationCommand";
 import { Client, BaseCommandInteraction } from "discord.js";
 
-export const getNowTime: ApplicationCommand = {
-  name: "gettime",
-  description: "現在時刻を取得します。",
+export const Hello: ApplicationCommand = {
+  name: "hello",
+  description: "Returns a greeting",
   type: "CHAT_INPUT",
   run: async (client: Client, interaction: BaseCommandInteraction) => {
-    const nowTime = new Date().toLocaleString();
-
+    const content = "Hello there!";
     await interaction.followUp({
       ephemeral: true,
-      content: nowTime,
+      content,
     });
   },
 };
