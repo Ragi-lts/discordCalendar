@@ -12,6 +12,6 @@ module.exports = {
   },
   plugins: ["@typescript-eslint"],
   rules: {
-    "keyword-spacing": 2,
+    "keyword-spacing": 4,
   },
 };

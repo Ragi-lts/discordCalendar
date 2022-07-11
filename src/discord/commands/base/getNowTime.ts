@@ -1,4 +1,4 @@
-import { ApplicationCommand } from "../interfaces/ApplicationCommand";
+import { ApplicationCommand } from "../../interfaces/Command";
 import { Client, BaseCommandInteraction } from "discord.js";
 
 export const getNowTime: ApplicationCommand = {

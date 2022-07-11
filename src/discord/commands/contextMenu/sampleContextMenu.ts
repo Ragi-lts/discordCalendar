@@ -1,6 +1,6 @@
 //import { ContextMenuCommandBuilder } from "@discordjs/builders";
 import { Client, UserContextMenuInteraction } from "discord.js";
-import { UserContextMenuCommand } from "../../interfaces/ApplicationCommand";
+import { UserContextMenuCommand } from "../../interfaces/Command";
 
 //const data = new ContextMenuCommandBuilder().setName("echo").setType("USER");
 export const contextMenu: UserContextMenuCommand = {

@@ -1,7 +1,7 @@
 /**環境変数 */
 import dotenv from "dotenv";
 
-import { Client, Intents, Interaction } from "discord.js";
+import { Client, Intents, Interaction, MessageReaction, User } from "discord.js";
 import {
   slashCommands,
   handleSlashCommand,
@@ -30,10 +30,10 @@ discordApp.once("ready", async (client) => {
     .then(() => console.log("Successfully register slash(/) commands!"))
     .catch((err) => console.error("Failed register slash(/) commands...", err));
 
-  await client.application?.commands
-    .set(contextCommands)
-    .then(() => console.log("Successfully register Application!"))
-    .catch((err) => console.error("Failed register Application...", err));
+  // await client.application?.commands
+  //   .set(contextCommands)
+  //   .then(() => console.log("Successfully register Application!"))
+  //   .catch((err) => console.error("Failed register Application...", err));
 
   console.info("Logined as ", client.user.tag);
 });
@@ -55,18 +55,29 @@ discordApp.on("emojiCreate", (emoji) => {
   console.log(`${author}さんが絵文字${name}を追加したよ`);
 });
 
+discordApp.on("interaction", async (interaction: Interaction) => {
+  console.log(interaction, interaction.isCommand());
+});
+
 discordApp.on("interactionCreate", async (interaction: Interaction) => {
-  if (interaction.isCommand() || interaction.isContextMenu()) {
-    await handleSlashCommand(discordApp, interaction);
-  }
-  if (interaction.isModalSubmit()) {
-    await submittedModal(discordApp, interaction);
-  }
-  /*
+  console.log(interaction, interaction.isCommand());
+  if (interaction.isCommand()) {
+    if (interaction.isContextMenu()) {
+      await handleSlashCommand(discordApp, interaction);
+    }
+    if (interaction.isModalSubmit()) {
+      await submittedModal(discordApp, interaction);
+    }
+
+    /*
   if (interaction.isApplicationCommand()) {
     await executeApplicaion(discordApp, interaction);
   }
   */
+    if (interaction.isUserContextMenu() || interaction.isMessageContextMenu()) {
+      await executeApplicaion(discordApp, interaction);
+    }
+  }
 });
 
 export default discordApp;
