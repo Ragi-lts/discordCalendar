@@ -6,7 +6,8 @@ import {
   slashCommands,
   handleSlashCommand,
   submittedModal,
-  ContextMenuCommand,
+  contextCommands,
+  executeApplicaion,
 } from "./applicationCommands";
 
 dotenv.config({ path: __dirname + "/../.env" });
@@ -28,6 +29,11 @@ discordApp.once("ready", async (client) => {
     .set(slashCommands)
     .then(() => console.log("Successfully register slash(/) commands!"))
     .catch((err) => console.error("Failed register slash(/) commands...", err));
+
+  await client.application?.commands
+    .set(contextCommands)
+    .then(() => console.log("Successfully register Application!"))
+    .catch((err) => console.error("Failed register Application...", err));
 
   console.info("Logined as ", client.user.tag);
 });
@@ -56,6 +62,11 @@ discordApp.on("interactionCreate", async (interaction: Interaction) => {
   if (interaction.isModalSubmit()) {
     await submittedModal(discordApp, interaction);
   }
+  /*
+  if (interaction.isApplicationCommand()) {
+    await executeApplicaion(discordApp, interaction);
+  }
+  */
 });
 
 export default discordApp;

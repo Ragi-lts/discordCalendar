@@ -3,11 +3,12 @@ import {
   BaseCommandInteraction,
   Client,
   ModalSubmitInteraction,
+  UserContextMenuInteraction,
 } from "discord.js";
 
 import {
   ApplicationCommand as slashCommand,
-  ContextMenuCommand as contextCommand,
+  UserContextMenuCommand as contextCommand,
 } from "./interfaces/ApplicationCommand";
 
 import { getNowTime } from "@Command/getNowTime";
@@ -39,4 +40,14 @@ export const submittedModal = async (
   const ModalIndex = modalNameArray.indexOf(modalId);
   if (ModalIndex != -1) modals[ModalIndex].submitted(client, interaction);
   if (ModalIndex == -1) interaction.reply("不正なSubmit");
+};
+
+export const executeApplicaion = async (
+  client: Client,
+  interaction: UserContextMenuInteraction
+): Promise<void> => {
+  console.log(interaction);
+  console.log(interaction.targetUser.username);
+
+  //const application = contextCommands.filter((command) => command.)
 };
