@@ -8,19 +8,20 @@ import {
   MessageApplicationCommandData,
   MessageContextMenuInteraction,
   CommandInteraction,
+  ContextMenuInteraction
 } from "discord.js";
 
 export interface ApplicationCommand extends ChatInputApplicationCommandData {
   responseType?: "CHAT" | "MODAL";
   modalId?: string;
-  run: (client: Client, interaction: CommandInteraction) => void;
-  submitted: (client: Client, interaction: ModalSubmitInteraction) => void;
+  run: (client : Client, interaction : CommandInteraction) => void;
+  submitted: (client : Client, interaction : ModalSubmitInteraction) => void;
 }
 
 export interface UserContextMenuCommand extends UserApplicationCommandData {
-  run: (client: Client, interaction: UserContextMenuInteraction) => void;
+  run: (client : Client, interaction : UserContextMenuInteraction) => void;
 }
 export interface MessageContextMenuCommand
-  extends MessageApplicationCommandData {
-  run: (client: Client, interaction: MessageContextMenuInteraction) => void;
+extends MessageApplicationCommandData {
+  run: (client : Client, interaction : MessageContextMenuInteraction) => void;
 }

@@ -5,7 +5,8 @@ import {
   MessageContextMenuInteraction,
   ModalSubmitInteraction,
   UserContextMenuInteraction,
-  CommandInteraction
+  CommandInteraction,
+  ContextMenuInteraction
 } from "discord.js";
 
 import {ApplicationCommand as slashCommand, UserContextMenuCommand as contextCommand} from "./interfaces/Command";
@@ -40,7 +41,14 @@ export const submittedModal = async (client : Client, interaction : ModalSubmitI
 export const executeApplicaion = async (client : Client, interaction : UserContextMenuInteraction | MessageContextMenuInteraction): Promise<void> => {
   //console.log(interaction);
   const component = new Modal().setCustomId("sampleModal").setTitle("modal");
-  if (interaction instanceof UserContextMenuInteraction) 
-    interaction.targetUser.send("あいうえお");
-    //const application = contextCommands.filter((command) => command.)
-  };
+  const command = contextCommands.find((c) => c.name == interaction.commandName);
+  console.log(command);
+  if (!!command) {
+    if (interaction instanceof UserContextMenuInteraction) 
+      command.run(client, interaction);
+      // if (interaction instanceof MessageContextMenuInteraction)
+      //   command?.run(client,interaction);
+    }
+  
+  //const application = contextCommands.filter((command) => command.)
+};
