@@ -6,7 +6,7 @@ import {
   CreateDateColumn,
   OneToMany,
 } from "typeorm";
-import { Todo } from "./Todos";
+import { Todo } from "@Entity/Todos";
 
 @Entity("users")
 export class User {

@@ -10,10 +10,10 @@ import {
   ContextMenuCommand as contextCommand,
 } from "./interfaces/ApplicationCommand";
 
-import { getNowTime } from "./commands/getNowTime";
-import { Hello } from "./commands/hello";
-import { sampleModal } from "./commands/modal/sampleModal";
-import { contextMenu } from "./commands/contextMenu/sampleContextMenu";
+import { getNowTime } from "@Command/getNowTime";
+import { Hello } from "@Command/hello";
+import { sampleModal } from "@Command/modal/sampleModal";
+import { contextMenu } from "@Command/contextMenu/sampleContextMenu";
 
 export const slashCommands: slashCommand[] = [Hello, getNowTime, sampleModal];
 export const contextCommands: contextCommand[] = [contextMenu];

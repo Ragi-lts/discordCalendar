@@ -7,5 +7,7 @@ export const contextMenu: ContextMenuCommand = {
   name: "",
   description: "現在時刻を取得します。",
   type: "CHAT_INPUT",
-  run(client: Client, interaction: ContextMenuInteraction) {},
+  run(client: Client, interaction: ContextMenuInteraction) {
+    if (!interaction.isUserContextMenu())
+  },
 };

@@ -4,13 +4,13 @@ dotenv.config();
 
 /** DB 関連*/
 import "reflect-metadata";
-import { AppDataSource } from "../ormconfig";
+import { AppDataSource } from "@ormconfig";
 
-import { User } from "./backend/Entity/User";
-import { UserService } from "./backend/Service/UserService";
+import { User } from "@Entity/User";
+import { UserService } from "@Service/UserService";
 
-import { Todo } from "./backend/Entity/Todos";
-import { TodoService } from "./backend/Service/TodoService";
+import { Todo } from "@Entity/Todos";
+import { TodoService } from "@Service/TodoService";
 
 /**Discord  関連*/
 import discordApp from "./discord";

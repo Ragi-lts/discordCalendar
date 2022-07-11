@@ -1,9 +1,9 @@
 import { Service } from "typedi";
 import { EntityNotFoundError, Repository } from "typeorm";
 import { InjectRepository } from "typeorm-typedi-extensions";
-import { AppDataSource } from "../../../ormconfig";
-import { Todo } from "../Entity/Todos";
-import { User } from "../Entity/User";
+import { AppDataSource } from "@ormconfig";
+import { Todo } from "@Entity/Todos";
+import { User } from "@Entity/User";
 
 @Service()
 export class TodoService {

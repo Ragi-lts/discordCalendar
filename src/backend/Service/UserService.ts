@@ -1,8 +1,8 @@
 import { Service } from "typedi";
 import { EntityNotFoundError, Repository } from "typeorm";
 import { InjectRepository } from "typeorm-typedi-extensions";
-import { AppDataSource } from "../../../ormconfig";
-import { User } from "../Entity/User";
+import { AppDataSource } from "@ormconfig";
+import { User } from "@Entity/User";
 
 @Service()
 export class UserService {
