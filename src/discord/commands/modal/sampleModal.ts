@@ -4,7 +4,7 @@ import {
   Client,
   ModalSubmitInteraction,
 } from "discord.js";
-import { ApplicationCommand } from "../../interfaces/ApplicationCommand";
+import { ApplicationCommand } from "../../interfaces/Command";
 
 const modalId = "modal-customid";
 const sample_modal = new Modal()

@@ -5,11 +5,11 @@ import {
   ModalSubmitInteraction,
 } from "discord.js";
 
-import { ApplicationCommand as Command } from "./interfaces/ApplicationCommand";
+import { ApplicationCommand as Command } from "./interfaces/Command";
 
-import { getNowTime } from "./commands/getNowTime";
-import { Hello } from "./commands/hello";
-import { sampleModal } from "./commands/modal/sampleModal";
+import { getNowTime } from "@Command/getNowTime";
+import { Hello } from "@Command/hello";
+import { sampleModal } from "@Command/modal/sampleModal";
 
 export const slashCommands: Command[] = [Hello, getNowTime, sampleModal];
 
