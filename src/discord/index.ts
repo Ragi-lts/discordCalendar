@@ -6,7 +6,7 @@ import {
   slashCommands,
   handleSlashCommand,
   submittedModal,
-} from "./applicationCommands";
+} from "./appCommandHandler";
 
 dotenv.config({ path: __dirname + "/../.env" });
 
